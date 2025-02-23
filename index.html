@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goodbye Letter</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffccf2;
+            background-image: url('https://www.transparenttextures.com/patterns/flowers.png');
+            font-family: 'Georgia', serif;
+        }
+
+        .envelope {
+            position: relative;
+            width: 320px;
+            height: 200px;
+            background-color: #ff66b3;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            z-index: 2;
+        }
+
+        .envelope:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ff3385;
+            border-radius: 10px;
+            clip-path: polygon(0% 0%, 100% 0%, 50% 50%);
+        }
+
+        .paper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 280px;
+            height: 450px;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: left;
+            font-size: 18px;
+            color: #333;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            overflow-y: auto;
+            z-index: 1;
+        }
+
+        .paper p {
+            margin: 15px 0;
+            line-height: 1.6;
+            display: flex;
+            align-items: center;
+        }
+
+        .circle-img {
+            width: 80px;  /* Increased width to make the image larger */
+            height: 80px; /* Increased height to make the image larger */
+            margin-right: 15px;
+            border-radius: 50%;  /* Ensures the image is perfectly circular */
+            object-fit: cover;    /* Ensures the image fits well within the circle */
+        }
+
+        .envelope.open {
+            transform: translateY(-50px);
+            z-index: 1;
+        }
+
+        .envelope.open .paper {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .signature {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Audio element for the song -->
+    <audio id="song" src="song2.mp3" preload="auto"></audio>
+
+    <div class="envelope" onclick="openEnvelope()">
+        <div class="paper">
+            <p>
+                <img src="image1.jpg" alt="Profile Image" class="circle-img">
+                You are my heart, my love, my everything. Saying goodbye to you is the hardest part of all.
+            </p>
+            <p>
+                <img src="image2.jpg" alt="Profile Image" class="circle-img">
+                From the very first moment we met, you brought so much light and love into my life, and I will forever be grateful for that.
+            </p>
+            <p>
+                <img src="image3.jpg" alt="Profile Image" class="circle-img">
+                I’ve shared my dreams with you, my fears, and my hopes, and you’ve loved me in a way that made everything seem possible. I can’t even begin to describe how much I will miss your smile, your laughter, and the warmth you bring to my soul.
+            </p>
+            <p>
+                <img src="image4.jpg" alt="Profile Image" class="circle-img">
+                Nina, please know that no matter where life takes me, you will always have a special place in my heart. You’ve helped me grow in ways I never thought possible. I hope you continue to chase your dreams, find happiness, and be the incredible person you are.
+            </p>
+            <p>
+                <img src="image5.jpg" alt="Profile Image" class="circle-img">
+                I will surely miss you more than words can express, but I believe you will find the right man who truly deserves you—someone who will love you the way you deserve to be loved.
+            </p>
+            <p>
+                <img src="image6.jpg" alt="Profile Image" class="circle-img">
+                This isn’t the end; it’s just a new chapter. I will carry you with me in my thoughts and in my heart every single day.
+            </p>
+            <p>
+                <img src="image7.jpg" alt="Profile Image" class="circle-img">
+                Take care, Nina. I love you more than words can express, and even though I may not be there physically, my love will never fade.
+            </p>
+
+            <div class="signature">
+                <p>With love,</p>
+                <p>Odlanyer Garcia</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openEnvelope() {
+            const envelope = document.querySelector('.envelope');
+            const song = document.getElementById('song');
+            envelope.classList.toggle('open');
+            song.currentTime = 0; // Reset the song to the beginning if it's already been played
+            song.play().catch(error => {
+                console.error("Audio playback failed:", error);
+            });
+        }
+    </script>
+</body>
+</html>
